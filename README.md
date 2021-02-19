@@ -41,6 +41,8 @@ cd /PATH/TO/A && make or make -C /PATH/TO/A will generate
 
 ### One big Makefile
 
+### One header directory
+
 ## How to add a new libray
 
 create a directory, put the following Makefile into the directory.

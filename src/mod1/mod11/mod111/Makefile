@@ -6,7 +6,4 @@ ifndef PROJECT_ROOT
 	_find = $(firstword $(call _walk,$(strip $(subst /, ,$1)),$2))
 	PROJECT_ROOT := $(patsubst %/$(anchor),%,$(call _find,$(CURDIR),$(anchor)))
 endif
-
-LIB_DEPS := mod11
-
-include $(PROJECT_ROOT)/prod/makefiles/tool.mk
+include $(PROJECT_ROOT)/prod/makefiles/module.mk

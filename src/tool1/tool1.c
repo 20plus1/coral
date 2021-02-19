@@ -2,5 +2,5 @@
 
 int main(void)
 {
-    printf("I am shan\n");
+    printf("I am tool1\n");
 }
