@@ -27,19 +27,30 @@ one of the source files in tool directory contains the main function.
 
 Modules can not contain tools.
 
-Compiling a module generates a main library and some sub-libraries; compiling a tool generates an executable and some sub-libraries.
+Compiling a module generates a main library and some sub-libraries, each sub-directory corresponds to a sub-library; compiling a tool generates an executable and some sub-libraries, each sub-directory corresponds to a sub-library.
 
-For example, Directory A is a module containing a1.c and sub-directories AB & AC; AB contains ab1.c and ab2.c, AC contains ac1.c and ac2.c.
+### module and library
 
-cd /PATH/TO/A && make or make -C /PATH/TO/A will generate
-1. /PATH/TO/lib/libA.a, which archives a1.o, ab1.o, ab2.o, ac1.o and ac2.o.
-2. /PATH/TO/lib/libAC.a, which archives ac1.o and ac2.o.
-3. /PATH/TO/lib/libAB.a, which archives ab1.o and ab2.o.
-4. /PATH/TO/objs/A/a1.o
-5. /PATH/TO/objs/A/AB/ab1.o
-5. /PATH/TO/objs/A/AB/ab2.o
-5. /PATH/TO/objs/A/AC/ac1.o
-5. /PATH/TO/objs/A/AC/ac2.o
+The name of the module directory is used as a part of the name of the library.
+
+For example, if a module is located at _/PATH/TO/A/MODULE/net_, the name of the generated library will be libnet.a, e.g. _/PATH/TO/OUTPUT/LIBRARY/DIR/libnet.a_.
+
+If the module contains some sub-modules, each sub-module will be used to generate corresponding library.
+
+For example, if there are two sub-modules in _/PATH/TO/A/MODULE/net_: _/PATH/TO/A/MODULE/net/ipv4_ and _/PATH/TO/A/MODULE/net/ipv6_, then two libraries, _/PATH/TO/OUTPUT/LIBRARY/DIR/libipv4.a_ and _/PATH/TO/OUTPUT/LIBRARY/DIR/libipv6.a_, will be generated.
+
+As you may already noticed, all the libraries, including root-library and sub-libraries, are all located in the same output directory, e.g. _/PATH/TO/OUTPUT/LIBRARY/DIR/_, as a result, the name of the module need to be unique across the whole project.
+
+The parent module contains all the contents in all his children modules.
+In the above example, _libnet.a_ contains all the object files (_.o_ file) in both _libipv4.a_ and _libipv6.a_.
+
+### tool and executable
+
+Each tool directory at least contains a source file. tool directory can contains multiple source files, there should be exact one source file containing the main function.
+
+If the tool directory contains some sub-modules, each sub-module will generate a corresponding library which is located in the same project-scope library output directory, e.g. the above _/PATH/TO/OUTPUT/LIBRARY/DIR/_.
+
+Each tool usually depends on some modules not located inside its directory, then we need to explicitly specify the dependences in the Makefile of the tool, e.g. _/PATH/TO/A/TOOL/Makefile_.
 
 ### Single Makefile
 
@@ -48,6 +59,22 @@ cd /PATH/TO/A && make or make -C /PATH/TO/A will generate
 ### Single output directory
 
 ### Do nothing to OS
+
+## Examples
+
+### Example 1
+Directory _A_ is a module containing _a1.c_ and sub-directories _AB_ & _AC_; _AB_ contains _ab1.c_ and _ab2.c_, _AC_ contains _ac1.c_ and _ac2.c_.
+
+`cd /PATH/TO/A && make` or `make -C /PATH/TO/A` will generate
+1. _/PATH/TO/lib/libA.a_, which archives _a1.o_, _ab1.o_, _ab2.o_, _ac1.o_ and _ac2.o_.
+2. _/PATH/TO/lib/libAC.a_, which archives _ac1.o_ and _ac2.o_.
+3. _/PATH/TO/lib/libAB.a_, which archives _ab1.o_ and _ab2.o_.
+4. _/PATH/TO/objs/A/a1.o_
+5. _/PATH/TO/objs/A/AB/ab1.o_
+5. _/PATH/TO/objs/A/AB/ab2.o_
+5. _/PATH/TO/objs/A/AC/ac1.o_
+5. _/PATH/TO/objs/A/AC/ac2.o_
+
 
 ## How to add a new libray
 
