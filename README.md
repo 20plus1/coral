@@ -19,9 +19,11 @@ Correspondingly, two concepts are defined in Coral: modules and tools.
 
 A module is a directory containing a Makefile file, some source files and some sub-directories; each sub-directory can potentially be a module by itself.
 Modules can only contain modules.
+No source file contains the main function.
 
 A tool is a directory containing a Makefile file, some source files and some sub-directories; each sub-directory can potentially be a module by itself.
 Tools can only contain modules.
+one of the source files in tool directory contains the main function.
 
 Modules can not contain tools.
 
