@@ -44,21 +44,44 @@ As you may already noticed, all the libraries, including root-library and sub-li
 The parent module contains all the contents in all his children modules.
 In the above example, _libnet.a_ contains all the object files (_.o_ file) in both _libipv4.a_ and _libipv6.a_.
 
+In this repo, the default library output path is _/PROJECT_ROOT/_prod/lib/_.
+
 ### tool and executable
 
 Each tool directory at least contains a source file. tool directory can contains multiple source files, there should be exact one source file containing the main function.
 
 If the tool directory contains some sub-modules, each sub-module will generate a corresponding library which is located in the same project-scope library output directory, e.g. the above _/PATH/TO/OUTPUT/LIBRARY/DIR/_.
 
-Each tool usually depends on some modules not located inside its directory, then we need to explicitly specify the dependences in the Makefile of the tool, e.g. _/PATH/TO/A/TOOL/Makefile_.
+A tool usually depends on some modules not located inside its directory, then we need to explicitly specify the dependences in the Makefile of the tool, e.g. _/PATH/TO/A/TOOL/checknet/Makefile_.
 
-### Single Makefile
+The output of compiling a tool directory is an executable.
 
-### Single header directory
+In this repo, the default tool output path is _/PROJECT_ROOT/_prod/bin/_.
 
-### Single output directory
+### Single Complete Dependence Graph
+
+There are two styles of using Makefile:
+1. calling `make -C /ANOTHER/PATH` in recipts of rules.
+2. not calling `make -C /ANOTHER/PATH` in recipts of rules.
+
+Coral is style 2.
+
+There is a Makefile in each tool or module directory, which is the root Makefile.
+It's ok to execute `make` in any tool or module directory, and `make` will do the right thing.
+
+Each time executing `make` command in a tool or module directory, `make` will read the root Makefile, as well as all the Makefiles included in the root Makefile; after reading all the Makefiles, `make` will construct a dependence graph and start to executing recipes according to the graph.
+
+### Single root header directory
+
+To make the coral simple, all the header files are placed in one root header directory.
+
+How to structure the root header directory is up to you.
+
+In the project, by default, the root header directory is _/PROJECT_ROOT/src/h/_, and there is no sub directory in the root header directory; all the header files are directly placed in the root header directory; the `-I/PROJECT_ROOT/src/h` is added to the command of compiling _.c_ to _.o_; as a result, all _.c_ files include header files in the way of `#include "header.h"`, instead of `#include "path/to/header.h"`.
 
 ### Do nothing to OS
+
+
 
 ## Examples
 
