@@ -1,5 +1,5 @@
 ifndef PROJECT_ROOT
-	$(error PROJECT_ROOT not defined)
+$(error PROJECT_ROOT not defined)
 endif
 
 _SECOND_LAST_MAKEFILE := $(word $(words $(MAKEFILE_LIST)),DUMMY $(MAKEFILE_LIST))
@@ -13,6 +13,14 @@ SUB_MODULE_MAKEFILES := $(wildcard $(TOOL_PATH)/*/Makefile)
 SUB_MODULE_NAMES := $(notdir $(patsubst %/Makefile,%,$(SUB_MODULE_MAKEFILES)))
 SUB_LIB_NAMES := $(addsuffix .a,$(addprefix lib,$(SUB_MODULE_NAMES)))
 LIB_DEP_NAMES := $(addsuffix .a,$(addprefix lib,$(LIB_DEPS)))
+
+HAS_SOMETHING_TO_DO := $(strip $(SRC_PATHS) $(SUB_MODULE_NAMES))
+
+ifndef HAS_SOMETHING_TO_DO
+ifneq "$(MAKECMDGOALS)" "clean"
+$(error nothing to do in $(TOOL_PATH))
+endif
+endif
 
 include $(PROJECT_ROOT)/prod/makefiles/values.mk
 

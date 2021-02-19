@@ -7,6 +7,6 @@ ifndef PROJECT_ROOT
 	PROJECT_ROOT := $(patsubst %/$(anchor),%,$(call _find,$(CURDIR),$(anchor)))
 endif
 
-LIB_DEPS := mod11
+LIB_DEPS := mod2
 
 include $(PROJECT_ROOT)/prod/makefiles/tool.mk
