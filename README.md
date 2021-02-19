@@ -39,9 +39,13 @@ cd /PATH/TO/A && make or make -C /PATH/TO/A will generate
 5. /PATH/TO/objs/A/AC/ac1.o
 5. /PATH/TO/objs/A/AC/ac2.o
 
-### One big Makefile
+### Single Makefile
 
-### One header directory
+### Single header directory
+
+### Single output directory
+
+### Do nothing to OS
 
 ## How to add a new libray
 
