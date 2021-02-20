@@ -12,7 +12,7 @@
 - [How to create a new library](#How-to-create-a-new-library)
 - [How to create a new tool](#How-to-create-a-new-tool)
 - [Examples](#Examples)
-    - [Examples 1](#Examples-1)
+    - [Examples 1](#Example-1)
 
 A simple consistent compilation framework based on Makefiles.
 
