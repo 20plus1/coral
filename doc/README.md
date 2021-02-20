@@ -2,7 +2,7 @@
 
 ## Table of Contents
 
-- [Two core concept behind: module and tool](# Two core concept behind: module and tool)
+- [Two core concept behind: module and tool](#Two core concept behind: module and tool)
 
 A simple consistent compilation framework based on Makefiles.
 
