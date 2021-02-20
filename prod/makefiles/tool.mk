@@ -22,7 +22,7 @@ $(error nothing to do in $(TOOL_PATH))
 endif
 endif
 
-include $(PROJECT_ROOT)/prod/makefiles/values.mk
+include $(PROJECT_ROOT)/prod/makefiles/base.mk
 
 BIN_PATH := $(addprefix $(BIN_ROOT)/,$(TOOL_NAME))
 SUB_LIB_PATHS := $(addprefix $(LIB_ROOT)/,$(SUB_LIB_NAMES))

@@ -24,7 +24,7 @@ $(error nothing to do in $(MODULE_PATH))
 endif
 endif
 
-include $(PROJECT_ROOT)/prod/makefiles/values.mk
+include $(PROJECT_ROOT)/prod/makefiles/base.mk
 
 LIB_PATH := $(addprefix $(LIB_ROOT)/,$(LIB_NAME))
 SUB_LIB_PATHS := $(addprefix $(LIB_ROOT)/,$(SUB_LIB_NAMES))
