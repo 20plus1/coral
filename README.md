@@ -10,3 +10,7 @@ This project is suitable for compiled languages, typically C programming languag
 * type `make clean` in any directory containing a Makefile file to clean up what `make` generated.
 * create a directory, copy src/mod1/Makefile into the directory, write one or more src.c, just `make` to generate a library.
 * create a directory, copy src/tool1/Makefile into the directory, write one main.c and/or more src.c, just `make` to generate a executable.
+
+## More details
+
+* [Coral Complete Doc](https://github.com/20plus1/coral/tree/master/doc)
