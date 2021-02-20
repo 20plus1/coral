@@ -1,5 +1,9 @@
 # Coral
 
+## Table of Contents
+
+- [Two core concept behind: module and tool](# Two core concept behind: module and tool)
+
 A simple consistent compilation framework based on Makefiles.
 
 This project is suitable for compiled languages, typically C programming language, and Unix-like OS, typically Linux.
