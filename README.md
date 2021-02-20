@@ -13,4 +13,4 @@ This project is suitable for compiled languages, typically C programming languag
 
 ## More details
 
-* [Coral Complete Documentation](https://github.com/20plus1/coral/tree/master/doc)
+[Coral Complete Documentation](https://github.com/20plus1/coral/tree/master/doc)
